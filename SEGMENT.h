@@ -42,8 +42,10 @@ public:
         T q = maxi ? -2147483647 : 2147483647;
 
         while (from < to) {
-            q = (from & 1) ? f(q, tree[from++]) : q; // 'from' is odd, so it is the right child of its parent, then interval includes node 'from' but doesn't include its parent
-            q = (to & 1) ? f(q, tree[--to]) : q; // 'to' is odd, so it's the right child of its parent, then might as well use the parent
+            // 'from' is odd, so it is the right child of its parent, then interval includes node 'from' but doesn't include its parent
+            q = (from & 1) ? f(q, tree[from++]) : q;
+            // 'to' is odd, so it's the right child of its parent, then might as well use the parent
+            q = (to & 1) ? f(q, tree[--to]) : q; 
             from >>= 1; // shift right is the same as divide by 2 but a little faster
             to >>= 1;
         }
