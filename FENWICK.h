@@ -1,6 +1,3 @@
-#ifndef FENWICK
-#define FENWICK
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -16,64 +13,49 @@ private:
     IntegerAddition f;
 
 public:
-    FenwickTree(vector<T>& ar);
-    T query(int i);
-    T query(int i, int j);
-    T valueAt(int i);
-    void apply(int i, T k);
-    void update(int i, T value);
-};
+    FenwickTree(vector<T>& ar){
+        tree = ar;
+        int size = tree.size();
 
-template <typename T>
-FenwickTree<T>::FenwickTree(vector<T>& ar){
-    tree = ar;
-    int size = tree.size();
-
-    for (int i = 1; i < size; i++) {
-        int p = i + (i & -i);
-        if (p < size) {
-            tree[p] = f.apply(tree[p], tree[i]);
+        for (int i = 1; i < size; i++) {
+            int p = i + (i & -i);
+            if (p < size) {
+                tree[p] = f.apply(tree[p], tree[i]);
+            }
         }
     }
-}
 
-template <typename T>
-T FenwickTree<T>::query(int i){
-    T q = 0;
-    while (i > 0) {
-        q = f.apply(q, tree[i]);
-        i -= i & -i;
+    T query(int i){
+        T q = 0;
+        while (i > 0) {
+            q = f.apply(q, tree[i]);
+            i -= i & -i;
+        }
+        return q;
     }
-    return q;
-}
 
-template <typename T>
-T FenwickTree<T>::query(int i, int j){
-    if (i > 1) {
-        return f.undo(query(j), query(i - 1));
-    } else {
-        return query(j);
+    T query(int i, int j){
+        if (i > 1) {
+            return f.undo(query(j), query(i - 1));
+        } else {
+            return query(j);
+        }
     }
-}
 
-template <typename T>
-T FenwickTree<T>::valueAt(int i){
-    return f.undo(query(i), query(i - 1));
-}
-
-template <typename T>
-void FenwickTree<T>::apply(int i, T k){
-    int size = tree.size();
-    while (i < size) {
-        tree[i] = f.apply(tree[i], k);
-        i += i & -i;
+    T valueAt(int i){
+        return f.undo(query(i), query(i - 1));
     }
-}
 
-template <typename T>
-void FenwickTree<T>::update(int i, T value){
-    T orig = valueAt(i);
-    apply(i, f.undo(value, orig));
-}
+    void apply(int i, T k){
+        int size = tree.size();
+        while (i < size) {
+            tree[i] = f.apply(tree[i], k);
+            i += i & -i;
+        }
+    }
 
-#endif
+    void update(int i, T value){
+        T orig = valueAt(i);
+        apply(i, f.undo(value, orig));
+    }
+};
