@@ -16,9 +16,11 @@ public:
     FenwickTree(vector<T>& ar){
         tree = ar;
         int size = tree.size();
-
+        
+        // data starts at index 1, ar[0] is ignored
+        // the operator should be reversable
         for (int i = 1; i < size; i++) {
-            int p = i + (i & -i);
+            int p = i + (i & -i); // index to parent range
             if (p < size) {
                 tree[p] = f.apply(tree[p], tree[i]);
             }
@@ -29,7 +31,7 @@ public:
         T q = 0;
         while (i > 0) {
             q = f.apply(q, tree[i]);
-            i -= i & -i;
+            i -= i & -i; // zeroes the least significant bit of value 1
         }
         return q;
     }
@@ -43,14 +45,15 @@ public:
     }
 
     T valueAt(int i){
+        // get value at original index i
         return f.undo(query(i), query(i - 1));
     }
 
     void apply(int i, T k){
         int size = tree.size();
         while (i < size) {
-            tree[i] = f.apply(tree[i], k);
-            i += i & -i;
+            tree[i] = f.apply(tree[i], k); // example: tree[i] += k;	
+            i += i & -i; // take the least significant set bit and add to i
         }
     }
 
