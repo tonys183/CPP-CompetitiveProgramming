@@ -1,2 +1,2 @@
 # CPP Codes #
-Useful codes of C++
+Useful algorithms and Contests solutions in C++
