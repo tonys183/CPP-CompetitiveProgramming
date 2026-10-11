@@ -1,8 +1,8 @@
 # Programación competitiva en C++
 
 <p align="center">
-  <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square&logo=cplusplus&logoColor=white">
-  <a href="LICENSE"><img alt="Licencia GPL-3.0" src="https://img.shields.io/github/license/tonys183/CPP-CompetitiveProgramming?style=flat-square&label=Licencia&logo=opensourceinitiative&logoColor=white"></a>
+  <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-00599C?style=plastic&logo=cplusplus&logoColor=white">
+  <a href="LICENSE"><img alt="Licencia GPL-3.0" src="https://img.shields.io/github/license/tonys183/CPP-CompetitiveProgramming?style=plastic&label=Licencia&logo=opensourceinitiative&logoColor=white"></a>
 </p>
 
 <p align="center">
