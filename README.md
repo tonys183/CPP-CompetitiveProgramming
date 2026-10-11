@@ -1,5 +1,15 @@
 # Programación competitiva en C++
 
+<p align="center">🏆</p>
+
+<p align="center">
+  <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat-square">
+</p>
+
+<p align="center">
+  <a href="#algoritmos">Algoritmos</a> · <a href="#práctica">Práctica</a> · <a href="#concursos">Concursos</a>
+</p>
+
 Colección de algoritmos y soluciones a problemas de programación competitiva desarrollados en C++. El repositorio reúne implementaciones de referencia, ejercicios de práctica y soluciones de concursos de Codeforces y AtCoder.
 
 ## Algoritmos
